@@ -33,14 +33,12 @@ OpenCore EFI for the **MSI GF63 9RCX**, running **macOS Sequoia (15)**.
 |---|---|---|
 | Internal audio (speakers/headphone jack) | ⏳ Untested | Sequoia still has `AppleHDA.kext` (unlike Tahoe, where it's removed entirely), so this should be fixable via `AppleALC` — not yet confirmed correct on this exact codec |
 | Bluetooth pairing | ⏳ Untested | Works on Ventura; Sequoia not yet verified |
-| OTA software updates | ⏳ Untested | Requires `RestrictEvents.kext` + `revpatch=sbvmm` boot-arg + `SecureBootModel: Disabled` (all present) — mechanism confirmed correct, an actual OTA update hasn't been tested yet |
 | Sleep / wake | ⏳ Retest pending | Working on Ventura after disabling `SSDT-DDGPU`/`SSDT-WAK` (see Known Issues) — needs reconfirmation on Sequoia |
 
 ## ❌ Known broken / not fixable on this hardware
 
 | Feature | Status | Why |
 |---|---|---|
-| Safari / native app hardware DRM (Netflix, Prime Video, Apple TV+, iTunes movies) | ❌ Broken, no fix exists | iGPU-only systems lack Apple's Management Engine certificate required for hardware DRM. Broken since macOS 10.12.3, applies to every macOS version, not specific to this EFI. **Workaround: use Chrome, Firefox, or Edge instead of Safari** — they use software DRM (Widevine) and work normally. |
 | Discrete Nvidia GPU | ❌ Not usable | Hardware-disabled prior to acquiring this unit (prior repair). Not a macOS/EFI limitation. |
 
 ## 🔧 Boot-args explained
